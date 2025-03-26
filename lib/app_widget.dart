@@ -16,6 +16,7 @@ class AppWidget extends StatelessWidget {
               : Brightness.light,
           ),
           home: HomePage(),
+           debugShowCheckedModeBanner: false,
         );
     }
     

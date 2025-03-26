@@ -18,11 +18,49 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Thiago DevApp'),
         actions: [
           CustomSwitch(),
         ],
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 120, 207, 123),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('contador: $counter'),
+            Container(
+              height: 10,
+            ),
+            CustomSwitch(),
+            Container(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black
+                ),
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black
+                ),
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black
+                ),
+            ],
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
