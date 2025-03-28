@@ -12,10 +12,8 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold( // Troquei Material por Scaffold
-      body: SingleChildScrollView(
+  Widget _body(){
+    return SingleChildScrollView(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -24,12 +22,6 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
-                Container(
-                  width: 350,
-                  height: 350,
-                  child: Image.network('https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
-                ),
                 Container(
                   height: 20,
                 ),
@@ -80,7 +72,24 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
-      ),
-    );
+      );
+    
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( // Troquei Material por Scaffold
+      body: Stack(
+        children: [
+          Image.asset('assets/images/background.png',
+            fit: BoxFit.cover,
+            height: MediaQuery.of(context).size.height,
+          ),
+          Container(
+            color: Colors.black.withOpacity(0.3),
+          ),
+          _body(),
+        ],
+      ));
   }
 }
