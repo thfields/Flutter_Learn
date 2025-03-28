@@ -24,7 +24,15 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomSwitch(),
+
+                Container(
+                  width: 350,
+                  height: 350,
+                  child: Image.network('https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
+                ),
+                Container(
+                  height: 20,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
@@ -58,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomePage(),

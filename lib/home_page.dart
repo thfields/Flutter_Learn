@@ -28,7 +28,6 @@ class HomePageState extends State<HomePage> {
         width: double.infinity,
         height: double.infinity,
         child: ListView(
-          //mainAxisAlignment: MainAxisAlignment.center,
           scrollDirection: Axis.vertical,
           children: [
             Text('contador: $counter'),
