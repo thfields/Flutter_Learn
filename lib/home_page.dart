@@ -17,8 +17,47 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 120, 207, 123),
+              ),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Text(
+                  'T',
+                  style: TextStyle(fontSize: 40, color: Colors.black),
+                ),
+              ),
+              accountName: Text('Thiago DevApp'), 
+              accountEmail: Text('thiagoabcfc@gmail.com')
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              subtitle: Text('Subitem 1'),
+              leading: Icon(Icons.home),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Logout'),
+              subtitle: Text('Finalizar sessão'),
+              leading: Icon(Icons.logout),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Thiago DevApp'),
+        centerTitle: true,
         actions: [
           CustomSwitch(),
         ],
@@ -30,11 +69,10 @@ class HomePageState extends State<HomePage> {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: [
-            Text('contador: $counter'),
+            Center(child: Text('contador: $counter', style: TextStyle(fontSize: 30))),
             Container(
-              height: 10,
+              height: 50,
             ),
-            CustomSwitch(),
             Container(
               height: 50,
             ),
