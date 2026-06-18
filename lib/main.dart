@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:hello_world/app_widget.dart';
+import 'package:flutter_learn/app_widget.dart';
 
 main(){
   runApp(AppWidget());

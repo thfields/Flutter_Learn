@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/home_page.dart';
-import 'package:hello_world/app_controller.dart';
-import 'package:hello_world/login_page.dart';
+import 'package:flutter_learn/home_page.dart';
+import 'package:flutter_learn/app_controller.dart';
+import 'package:flutter_learn/login_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override

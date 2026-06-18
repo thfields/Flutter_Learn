@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_learn/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,9 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 20,
-                ),
+                Container(height: 20),
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20.0, left: 12, right: 12),
@@ -36,54 +35,58 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Email',
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         TextField(
                           onChanged: (value) {
                             password = value;
                           },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Password',
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(255, 218, 221, 218),
                           ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ),
-                            );
+                          onPressed: () async {
+                            // ARMAZENAMENTO LOCAL
+                            final prefs = await SharedPreferences.getInstance();
+                            // Salva o email digitado
+                            await prefs.setString('user_email', email.isEmpty ? 'visitante@teste.com' : email);
+
+                            if(context.mounted) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HomePage(),
+                                ),
+                              );
+                            }
                           },
-                          child: Text('Login'),
+                          child: const Text('Login'),
                         ),
                       ],
-                      
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),
         ),
       );
-    
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Troquei Material por Scaffold
+    return Scaffold(
       body: Stack(
         children: [
           Image.asset('assets/images/background.png',
